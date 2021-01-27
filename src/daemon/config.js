@@ -5,8 +5,8 @@ const multiaddr = require('multiaddr');
 const http = require('http');
 const portfinder = require('portfinder');
 const { shell } = require('electron');
-const i18n = require('i18next')
-const { showDialog } = require('../dialogs')
+//const i18n = require('i18next')
+//const { showDialog } = require('../dialogs')
 const store = require('../common/store');
 const logger = require('../common/logger');
 
@@ -202,15 +202,15 @@ async function checkPortsArray (ipfsd, addrs) {
     const freePort = await portfinder.getPortPromise({ port: port, stopPort: port + 100 })
 
     if (port !== freePort) {
-      const opt = showDialog({
-        title: i18n.t('multipleBusyPortsDialog.title'),
-        message: i18n.t('multipleBusyPortsDialog.message'),
-        type: 'error',
-        buttons: [
-          i18n.t('multipleBusyPortsDialog.action'),
-          i18n.t('close')
-        ]
-      })
+      //const opt = showDialog({
+        //title: i18n.t('multipleBusyPortsDialog.title'),
+        //message: i18n.t('multipleBusyPortsDialog.message'),
+        //type: 'error',
+        //buttons: [
+          //i18n.t('multipleBusyPortsDialog.action'),
+          //i18n.t('close')
+        //]
+      //})
 
       if (opt === 0) {
         shell.openPath(join(ipfsd.path, 'config'))
@@ -293,15 +293,15 @@ async function checkPorts (ipfsd) {
       }
     }
 
-    const opt = showDialog({
-      title: i18n.t(`${message}.title`),
-      message: i18n.t(`${message}.message`, options),
-      type: 'error',
-      buttons: [
-        i18n.t(`${message}.action`, options),
-        i18n.t('close')
-      ]
-    })
+    //const opt = showDialog({
+      //title: i18n.t(`${message}.title`),
+      //message: i18n.t(`${message}.message`, options),
+      //type: 'error',
+      //buttons: [
+        //i18n.t(`${message}.action`, options),
+        //i18n.t('close')
+      //]
+    //})
 
     if (opt !== 0) {
       throw new Error('ports already being used')

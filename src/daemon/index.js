@@ -39,17 +39,17 @@ module.exports = async function (ctx) {
       return ipfsd;
     }
 
-    if (!ipfsd) {
-      await ipfsNotRunningDialog(ctx);
-    }
+    //if (!ipfsd) {
+      //await ipfsNotRunningDialog(ctx);
+    //}
 
     return ipfsd;
   }
 
-  //const runAndStatus = (fn) => async () => {
-    //await fn();
-    //return status;
-  //}
+  const runAndStatus = (fn) => async () => {
+    await fn();
+    return status;
+  }
 
   const startIpfs = async () => {
     if (ipfsd) {
