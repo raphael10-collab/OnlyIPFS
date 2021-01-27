@@ -62,10 +62,19 @@
     "chokidar": "^3.5.0",
     "deep-equal": "^2.0.5",
     "electron-squirrel-startup": "^1.0.0",
+    "electron-store": "^7.0.0",
     "file-url": "^3.0.0",
-    "fs-extra": "^9.0.1",
+    "fs-extra": "^9.1.0",
+    "go-ipfs": "^0.7.0",
+    "i18next": "^19.8.4",
     "ipfs": "^0.53.2",
+    "ipfs-http-client": "^48.2.2",
+    "ipfsd-ctl": "^7.2.0",
+    "is-ipfs": "^2.0.0",
+    "multiaddr": "^8.1.2",
+    "multiaddr-to-uri": "^6.0.0",
     "open": "^7.3.1",
+    "portfinder": "^1.0.28",
     "react": "^16.13.1",
     "react-async": "^10.0.1",
     "react-dom": "^16.13.1",
@@ -74,7 +83,10 @@
     "react-table": "^7.6.3",
     "react-viewer": "^3.2.2",
     "react-window": "^1.8.6",
+    "recursive-readdir": "^2.2.2",
     "redux": "^4.0.5",
-    "rxjs": "^6.6.3"
+    "rxjs": "^6.6.3",
+    "untildify": "^4.0.0",
+    "winston": "^3.3.3"
   }
 }

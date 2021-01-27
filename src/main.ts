@@ -4,6 +4,8 @@ import path from 'path';
 import url from 'url';
 
 
+const setupDaemon = require('./daemon');
+
 const fileUrl = require('file-url');
 
 // https://github.com/ipfs/js-ipfs/blob/master/examples/run-in-electron/main.js
