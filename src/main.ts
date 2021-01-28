@@ -12,7 +12,7 @@ const fileUrl = require('file-url');
 
 // https://github.com/ipfs/js-ipfs/blob/master/examples/run-in-electron/main.js
 
-//const IPFS = require('ipfs');
+const IPFS = require('ipfs');
 
 declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
 declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
