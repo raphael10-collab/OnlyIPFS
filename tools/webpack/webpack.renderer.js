@@ -5,7 +5,8 @@ const aliases = require('./webpack.aliases');
 
 module.exports = {
   // https://github.com/electron/electron/issues/9920
-  target: 'electron-renderer',
+  //target: 'electron-renderer',
+  target: 'web',
   module: {
     rules,
   },

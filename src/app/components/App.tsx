@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { hot } from 'react-hot-loader';
 
+// https://github.com/ipfs/js-ipfs/blob/master/examples/browser-webpack/src/components/app.js
+const IPFS = require('ipfs');
+const uint8ArrayConcat = require('uint8arrays/concat');
+const uint8ArrayToString = require('uint8arrays/to-string');
+
 const items = [
     <div key={0}>first</div>,
     <div key={1}>second</div>
@@ -39,6 +44,45 @@ const getFileExtension = (filepath: string): string => {
 function App() {  
   const [win, setWin] = useState("A-Type");
 
+  const [ipfsState, setIpfsState] = useState({
+    _id: null,
+    _agentVersion: null,
+    _protocolVersion: null,
+    _addedFileHash: null,
+    _addedFileContents: null
+  });
+
+
+  const ops = async() => {
+    const node = await IPFS.create({ repo: String(Math.random() + Date.now()) });
+
+    console.log('IPFS node is ready');
+
+    const { id, agentVersion, protocolVersion } = await node.id();
+
+    const stringToUse = 'hello world from webpacked IPFS';
+    const { cid } = await node.add(stringToUse);
+
+    setIpfsState({
+      _id: id,
+      _agentVersion: agentVersion,
+      _protocolVersion: protocolVersion,
+      _addedFileHash: cid.toString(),
+      _addedFileContents: null 
+    });
+
+    let bufs = [];
+    for await (const buf of node.cat(cid)) {
+      bufs.push(buf);
+    }
+    const data = uint8ArrayConcat(bufs);
+    setIpfsState({
+      _id: id,
+      _agentVersion: agentVersion,
+      _protocolVersion: protocolVersion,
+      _addedFileHash: cid.toString(),
+      _addedFileContents: uint8ArrayToString(data) });
+  }
 
   let filePath_1 = '/home/marco/Downloads/Art21Costituzione.jpg';
   let filePath_2 = '/home/marco/Downloads/VitaminaCAlimenti.pdf';
@@ -103,6 +147,10 @@ function App() {
         <h2 className='heading'>
             Multiple Selective Windows Communication
         </h2>
+
+              <div style={{ textAlign: 'center' }}>
+                <p>Your ID is <strong>{ipfsState._id}</strong></p>
+              </div>
 
               <p>
                 <button id="sendFilePath" onClick={() => {

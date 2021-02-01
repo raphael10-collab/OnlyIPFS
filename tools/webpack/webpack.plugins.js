@@ -8,5 +8,10 @@ module.exports = [
   new ForkTsCheckerWebpackPlugin(),
   new webpack.ExternalsPlugin('commonjs', [
     'electron'
-  ])
+  ]),
+  // https://github.com/ipfs/js-ipfs/blob/master/examples/browser-webpack/webpack.config.js
+  new webpack.ProvidePlugin({
+    Buffer: ['buffer', 'Buffer'],
+    process: 'process/browser'
+  })
 ];

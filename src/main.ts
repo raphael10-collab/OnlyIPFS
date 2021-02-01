@@ -4,15 +4,15 @@ import path from 'path';
 import url from 'url';
 
 const logger = require('./common/logger');
-const setupProtocolHandlers = require('./protocol-handlers');
-const setupPubsub = require('./enable-pubsub');
-const setupDaemon = require('./daemon');
+//const setupProtocolHandlers = require('./protocol-handlers');
+//const setupPubsub = require('./enable-pubsub');
+//const setupDaemon = require('./daemon');
 
 const fileUrl = require('file-url');
 
 // https://github.com/ipfs/js-ipfs/blob/master/examples/run-in-electron/main.js
 
-const IPFS = require('ipfs');
+//const IPFS = require('ipfs');
 
 declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
 declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
@@ -213,25 +213,25 @@ function handleError (err) {
   }
 
   logger.error(err)
-  criticalErrorDialog(err)
+  //criticalErrorDialog(err)
 }
 
 
-const ctx = {};
+//const ctx = {};
 
-app.on('will-finish-launching', () => {
-  setupProtocolHandlers(ctx);
-})
+//app.on('will-finish-launching', () => {
+  //setupProtocolHandlers(ctx);
+//})
 
 
-async function run () {
-  try {
-    await setupDaemon(ctx);
+//async function run () {
+  //try {
+    //await setupDaemon(ctx);
 
-    await Promise.all([
-      setupPubsub(ctx)
-    ])
-  } catch (e) {
-    handleError(e);
-  }
-}
+    //await Promise.all([
+      //setupPubsub(ctx)
+    //])
+  //} catch (e) {
+    //handleError(e);
+  //}
+//}
